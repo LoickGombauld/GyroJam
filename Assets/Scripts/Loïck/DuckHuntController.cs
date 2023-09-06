@@ -29,7 +29,7 @@ public class DuckHuntController : MinigameController<DuckHuntData>
             yield return new WaitForSeconds(CurrentData.DuckDelay);
         }
 
-        if (CurrentData.NumDucktoKill >= 0 )
+        if (CurrentData.NumDucktoKill <= 0 )
         {
             _isWin = true;
         }
