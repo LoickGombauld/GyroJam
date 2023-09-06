@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UnityEventSequencer : MonoBehaviour
+[System.Serializable]
+public class UnityEventSequencer 
 {
     [SerializeField]
     private UnityEvent[] _sequence;

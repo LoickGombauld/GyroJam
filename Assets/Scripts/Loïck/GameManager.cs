@@ -6,35 +6,53 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-   [SerializeField] private int _bossLife = 3;
-   [SerializeField] private int _playerLife = 3;
+    [SerializeField] private int _bossLife = 3;
+    [SerializeField] private int _playerLife = 3;
 
-   [SerializeField] private float _time = 0;
-   private int _score = 0;
-   [SerializeField] private string _name = "Larry";
-   private void Start()
-   {
-       DontDestroyOnLoad(this);
-   }
+    [SerializeField] private UnityEventSequencer _eventWinminiGame;
+    [SerializeField] private UnityEventSequencer _eventLooseminiGame;
+    [SerializeField] private float _time = 0;
+    private int _score = 0;
+    [SerializeField] private string _name = "Larry";
 
-
-   public void SetName(string name)
-   {
-       _name = name;
-   }
-
-   public void AddScore(int addtionScore)
-   {
-       _score += addtionScore;
-   }
-
-  public void LoadScene(string sceneName)
-   {
-       SceneManager.LoadScene(sceneName);
-   }
+    [SerializeField]private List<MinigameBaseData> _minigames;
 
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+    public void RemovePlayerLife()
+    {
+        _playerLife--;
+    }
+
+    public void RemoveBossLife()
+    {
+        _bossLife--;
+    }
+
+    public void SetName(string name)
+    {
+        _name = name;
+    }
+
+    public void AddScore(int addtionScore)
+    {
+        _score += addtionScore;
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 
 }
 
+
+public enum Difficulty
+{
+    Easy = 0, Normal = 1, Hard = 2
+}
 
