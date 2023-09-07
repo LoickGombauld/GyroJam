@@ -7,8 +7,8 @@ using UnityEngine.Serialization;
 
 public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBaseData
 {
-    protected t[] _data = new t[3];
-    protected Difficulty _difficulty;
+    [SerializeField]protected t[] _data = new t[3];
+    [SerializeField] protected Difficulty _difficulty;
     private bool _isWin = false;
     protected int _currentScore = 0;
     protected bool _timerinProgress = false;
