@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BlackholeController : MinigameController<BlackholeData>
 {
     [SerializeField] private GameObject _duckPrefab;
     private List<GameObject> _blackHoleEnemies;
-
+    private UnityEvent _whenKillGuy;
 
     public void StartMiniGame()
     {
@@ -24,20 +25,20 @@ public class BlackholeController : MinigameController<BlackholeData>
         }
     }
 
-    private void DeleteDuck(GameObject duck)
+    private void DeleteGuy(GameObject Guy)
     {
-        _blackHoleEnemies.Remove(duck);
-        Destroy(duck);
+        _blackHoleEnemies.Remove(Guy);
+        Destroy(Guy);
         CurrentData.NumEnemytoKill--;
     }
 
     public void Update()
     {
-        foreach (var duck in _blackHoleEnemies)
+        foreach (var guy in _blackHoleEnemies)
         {
-            if (_player.PlayerRadius > Vector2.Distance(duck.transform.position, _player.transform.position))
+            if (_player.PlayerRadius > Vector2.Distance(guy.transform.position, _player.transform.position))
             {
-                DeleteDuck(duck);
+               _whenKillGuy.Invoke();
             }
         }
     }
