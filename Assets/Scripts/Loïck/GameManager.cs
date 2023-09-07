@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _bossLife = 3;
     [SerializeField] private int _playerLife = 3;
 
-    [SerializeField] private UnityEventSequencer _eventWinminiGame;
+    [FormerlySerializedAs("_eventWinminiGame")] [SerializeField] private UnityEventSequencer _eventWinMiniGame;
     [SerializeField] private UnityEventSequencer _eventLooseminiGame;
     [SerializeField] private float _time = 0;
     private int _score = 0;
@@ -23,8 +24,15 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void RemovePlayerLife()
+    public void WinMiniGame(int score)
     {
+        _score += score ;
+        _eventWinMiniGame.StartSequence();
+    }
+
+    public void LooseMiniGame()
+    {
+        _eventLooseminiGame.StartSequence();
         _playerLife--;
     }
 
@@ -38,10 +46,6 @@ public class GameManager : MonoBehaviour
         _name = name;
     }
 
-    public void AddScore(int addtionScore)
-    {
-        _score += addtionScore;
-    }
 
     public void LoadScene(string sceneName)
     {

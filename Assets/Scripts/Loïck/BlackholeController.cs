@@ -2,33 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class BlackholeController : MinigameController<BlackholeData>
 {
-    [SerializeField] private GameObject _duckPrefab;
+    [SerializeField] private GameObject _guyPrefab;
     private List<GameObject> _blackHoleEnemies;
     private UnityEvent _whenKillGuy;
 
     public void StartMiniGame()
     {
+        StartCoroutine(Chrono());
         StartCoroutine(MiniGameCoroutine());
     }
 
     IEnumerator MiniGameCoroutine()
     {
-        yield return new WaitForSeconds(CurrentData.TimeDuration);
+        for (int i = 0; i < CurrentData.NumEnemytoKill  ; i++)
+        {
+            Vector3 randomposition = Random.insideUnitCircle * CurrentData.SpawnRange;
+            GameObject guy = Instantiate(_guyPrefab);
+            guy.transform.position = randomposition;
+            _blackHoleEnemies.Add(guy);
+        }
+
+        yield return new WaitUntil(() => _timerinProgress);
         
 
         if (CurrentData.NumEnemytoKill == 0)
         {
-            _isWin = true;
+            SetIsWin(true);
+        }
+        else
+        {
+            SetIsWin(false);
         }
     }
 
-    private void DeleteGuy(GameObject Guy)
+    private void DeleteGuy(GameObject guy)
     {
-        _blackHoleEnemies.Remove(Guy);
-        Destroy(Guy);
+        _blackHoleEnemies.Remove(guy);
+        Destroy(guy);
         CurrentData.NumEnemytoKill--;
     }
 
@@ -38,7 +52,8 @@ public class BlackholeController : MinigameController<BlackholeData>
         {
             if (_player.PlayerRadius > Vector2.Distance(guy.transform.position, _player.transform.position))
             {
-               _whenKillGuy.Invoke();
+                _whenKillGuy.Invoke();
+                DeleteGuy(guy);
             }
         }
     }

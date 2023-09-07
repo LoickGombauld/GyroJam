@@ -6,4 +6,6 @@ using UnityEngine;
 public class BlackholeData : MinigameBaseData
 {
     public int NumEnemytoKill = 3;
+
+    public float SpawnRange;
 }
