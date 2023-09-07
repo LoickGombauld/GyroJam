@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackholeData : MonoBehaviour
+[CreateAssetMenu(fileName = "MiniGame 6", menuName = "MiniGame/MiniGame 6", order = 1)]
+public class BlackholeData : MinigameBaseData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int NumEnemytoKill = 3;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float SpawnRange;
 }

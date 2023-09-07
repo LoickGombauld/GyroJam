@@ -14,24 +14,33 @@ public class DuckHuntController : MinigameController<DuckHuntData>
     private List<GameObject> _ducks;
 
 
-    public void StartMiniGame()
+    protected override void StartMiniGame()
     {
+        StartCoroutine(Chrono());
         StartCoroutine(MiniGameCoroutine());
     }
 
+
     IEnumerator MiniGameCoroutine()
     {
-
-        while (CurrentData.TimeDuration > 0)
+        while (_timerinProgress || CurrentData.NumDucktoKill > 0)
         {
             _ducks.Add(Instantiate(_duckPrefab));
 
             yield return new WaitForSeconds(CurrentData.DuckDelay);
         }
 
-        if (CurrentData.NumDucktoKill <= 0 )
+        if (CurrentData.NumDucktoKill <= 0)
         {
-            _isWin = true;
+            for (int i = 0; i < CurrentData.TimeDuration; i++)
+            {
+                _currentScore += 20;
+            }
+            SetIsWin(true);
+        }
+        else
+        {
+            SetIsWin(false);
         }
     }
 
