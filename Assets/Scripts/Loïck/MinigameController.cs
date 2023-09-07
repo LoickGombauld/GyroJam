@@ -12,23 +12,24 @@ public class MinigameController<t> : MonoBehaviour
 
    protected t CurrentData
    {
-       get
-       {
-           switch (_difficulty)
-           {
-               case Difficulty.Easy:
-                   return _data[0];
-                
-               case Difficulty.Normal:
-                   return _data[1];
-                  
-               case Difficulty.Hard:
-                   return _data[2];
-              
-               default:
-                   throw new ArgumentOutOfRangeException(nameof(_difficulty), _difficulty, null);
-           }
+        get
+        {
+            switch (_difficulty)
+            {
+                case Difficulty.Easy:
+                    return _data[0];
+
+                case Difficulty.Normal:
+                    return _data[1];
+
+                case Difficulty.Hard:
+                    return _data[2];
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(_difficulty), _difficulty, null);
+            }
         }
+
    }
    public void SetDifficulty(Difficulty difficulty)
    {
