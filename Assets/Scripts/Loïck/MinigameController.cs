@@ -19,6 +19,7 @@ public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBa
     private void Start()
     {
         _gameManager = GameManager.Instance;
+        _player.SetMiniGameData(_currentData);
         StartMiniGame();
     }
 
@@ -44,5 +45,6 @@ public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBa
             _gameManager.LooseMiniGame();
             _hasLooseEvent.Invoke();
         }
+        Destroy(transform.gameObject);
     }
 }

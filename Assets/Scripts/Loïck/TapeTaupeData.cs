@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MiniGame 4", menuName = "MiniGame/Minigame 4 ", order = 1)]
+[CreateAssetMenu(fileName = "MiniGame 3", menuName = "MiniGame/Minigame 3", order = 1)]
 public class TapeTaupeData : MinigameBaseData
 {
 

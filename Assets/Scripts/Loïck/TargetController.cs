@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
+[CreateAssetMenu(fileName = "MiniGame 5", menuName = "MiniGame/MiniGame 5", order = 1)]
 public class TargetController : MinigameController<MinigameBaseData>
 {
     [SerializeField] private Transform[] _points;

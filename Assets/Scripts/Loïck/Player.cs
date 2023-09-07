@@ -13,7 +13,12 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private MinigameBaseData _minigameBaseData;
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private Vector2 _dir; 
+
+    private bool _isKill = false;
+
+    public bool isKill => _isKill;
+
+    private Vector2 _dir; 
     private CircleCollider2D _collider;
     public float PlayerRadius => _collider.radius;
 
@@ -44,8 +49,11 @@ public class Player : MonoBehaviour
         _dir = l_direction;
     }
 
-    public void CancelDirectionMovement(InputAction.CallbackContext p_ctx)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        _dir = Vector2.zero;
+        if (col.transform.tag == "Enemy")
+        {
+            _isKill = true;
+        }
     }
 }
