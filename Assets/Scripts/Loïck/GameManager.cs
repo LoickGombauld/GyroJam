@@ -9,10 +9,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int _bossLife = 3;
     [SerializeField] private int _playerLife = 3;
-
-    [FormerlySerializedAs("_eventWinminiGame")] [SerializeField] private UnityEventSequencer _eventWinMiniGame;
+    
+    [SerializeField] private UnityEventSequencer _eventWinMiniGame;
     [SerializeField] private UnityEventSequencer _eventLooseminiGame;
-    [SerializeField] private float _time = 0;
     private int _score = 0;
     [SerializeField] private string _name = "Larry";
 

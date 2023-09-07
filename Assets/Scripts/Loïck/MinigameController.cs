@@ -18,7 +18,7 @@ public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBa
     [SerializeField] private UnityEvent _hasLooseEvent;
 
     protected abstract void StartMiniGame();
-    public IEnumerator Chrono()
+    protected IEnumerator Chrono()
     {
         _timerinProgress = true;
         yield return new WaitForSeconds(CurrentData.TimeDuration);
