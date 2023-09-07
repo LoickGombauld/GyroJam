@@ -13,11 +13,12 @@ public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBa
     [SerializeField] protected Player _player;
     [SerializeField] private UnityEvent _hasWinEvent;
     [SerializeField] private UnityEvent _hasLooseEvent;
-
+    private int _second = 0;
     protected abstract void StartMiniGame();
 
     private void Start()
     {
+        _second = _currentData.TimeDuration;
         _gameManager = GameManager.Instance;
         _player.SetMiniGameData(_currentData);
         StartMiniGame();
@@ -26,7 +27,12 @@ public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBa
     protected IEnumerator Chrono()
     {
         _timerinProgress = true;
-        yield return new WaitForSeconds(_currentData.TimeDuration);
+        
+        while (_second == 0)
+        {
+            _second--;
+            yield return new WaitForSeconds(1);
+        }
         _timerinProgress = false;
     }
 
@@ -37,6 +43,10 @@ public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBa
     {
         if (hasWin)
         {
+            for (int i = 0; i < _second; i++)
+            {
+                _currentScore += 20;
+            }
             _gameManager.WinMiniGame(_currentScore);
             _hasWinEvent.Invoke();
         }

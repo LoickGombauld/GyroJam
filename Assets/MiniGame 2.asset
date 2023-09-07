@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339c8b02df40a3845883b3d3f07565e4, type: 3}
   m_Name: MiniGame 2
   m_EditorClassIdentifier: 
-  TimeDuration: 0
-  PlayerRadius: 1
-  PlayerSpeed: 0
+  TimeDuration: 60
+  PlayerSpeed: 1

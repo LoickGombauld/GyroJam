@@ -26,7 +26,7 @@ public class BlackholeController : MinigameController<BlackholeData>
             _blackHoleEnemies.Add(guy);
         }
 
-        yield return new WaitUntil(() => _timerinProgress);
+        yield return new WaitUntil(() => _timerinProgress || _currentData.NumEnemytoKill == 0);
         
 
         if (_currentData.NumEnemytoKill == 0)
@@ -51,7 +51,7 @@ public class BlackholeController : MinigameController<BlackholeData>
 
         foreach (var guy in _blackHoleEnemies)
         {
-            if (_player.PlayerRadius > Vector2.Distance(guy.transform.position, _player.transform.position))
+            if (_player.PlayerRadius < Vector2.Distance(guy.transform.position, _player.transform.position))
             {
                 _whenKillGy.Invoke();
                 DeleteGuy(guy);
