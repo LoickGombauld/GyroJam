@@ -14,7 +14,7 @@ public class DuckHuntController : MinigameController<DuckHuntData>
     private List<GameObject> _ducks;
 
 
-    public void StartMiniGame()
+    protected override void StartMiniGame()
     {
         StartCoroutine(Chrono());
         StartCoroutine(MiniGameCoroutine());

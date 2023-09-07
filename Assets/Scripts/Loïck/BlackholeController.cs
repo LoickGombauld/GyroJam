@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-public class BlackholeController : MinigameController<BlackholeData>
+public abstract class BlackholeController : MinigameController<BlackholeData>
 {
     [SerializeField] private GameObject _guyPrefab;
     private List<GameObject> _blackHoleEnemies;
     private UnityEvent _whenKillGuy;
 
-    public void StartMiniGame()
+    protected override void StartMiniGame()
     {
         StartCoroutine(Chrono());
         StartCoroutine(MiniGameCoroutine());

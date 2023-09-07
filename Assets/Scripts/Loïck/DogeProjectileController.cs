@@ -12,7 +12,7 @@ public class DogeProjectileController : MinigameController<DogeProjectileData>
     [SerializeField] private GameObject _prefabsProjectile;
     public Transform CurrentProjectileSpot => _projectileSpot[Random.Range(0, _projectileSpot.Length)];
     [SerializeField] private UnityEvent _whenProjectilespawnEvent;
-    public void StartMiniGame()
+    protected override void StartMiniGame()
     {
         StartCoroutine(Chrono());
         StartCoroutine(MiniGameCoroutine());

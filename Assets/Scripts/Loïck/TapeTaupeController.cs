@@ -8,10 +8,16 @@ public class TapeTaupeController : MinigameController<TapeTaupeData>
 {
     private Taupe[] SpotA;
     private Taupe[] SpotB;
+
+    protected override void StartMiniGame()
+    {
+        
+    }
+
     public IEnumerator TaupeLoop()
     {
 
-        while (CurrentData.TimeDuration > 0)
+        while (_timerinProgress)
         {
             Taupe[] currentTaupe = new Taupe[3];
             switch (Random.Range(0, 1))

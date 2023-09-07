@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-public class MinigameController<t> : MonoBehaviour where t : MinigameBaseData
+public abstract class MinigameController<t> : MonoBehaviour where t : MinigameBaseData
 {
     protected t[] _data = new t[3];
     protected Difficulty _difficulty;
@@ -17,7 +17,7 @@ public class MinigameController<t> : MonoBehaviour where t : MinigameBaseData
     [SerializeField] private UnityEvent _hasWinEvent;
     [SerializeField] private UnityEvent _hasLooseEvent;
 
-
+    protected abstract void StartMiniGame();
     public IEnumerator Chrono()
     {
         _timerinProgress = true;
