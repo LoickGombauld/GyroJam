@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-public abstract class BlackholeController : MinigameController<BlackholeData>
+public class BlackholeController : MinigameController<BlackholeData>
 {
     [SerializeField] private GameObject _guyPrefab;
     private List<GameObject> _blackHoleEnemies;
-    private UnityEvent _whenKillGuy;
+    private UnityEvent _whenKillGy;
 
     protected override void StartMiniGame()
     {
@@ -48,13 +48,15 @@ public abstract class BlackholeController : MinigameController<BlackholeData>
 
     public void Update()
     {
+
         foreach (var guy in _blackHoleEnemies)
         {
             if (_player.PlayerRadius > Vector2.Distance(guy.transform.position, _player.transform.position))
             {
-                _whenKillGuy.Invoke();
+                _whenKillGy.Invoke();
                 DeleteGuy(guy);
             }
         }
+        
     }
 }
