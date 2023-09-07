@@ -113,17 +113,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2b0ae775-d690-4de3-ae0d-a2bc9f1caef0"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Touch"",
-                    ""action"": ""LeftButton"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""559a3dc4-771a-4997-8e9a-f6350a08c611"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -135,8 +124,19 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""33aa5a7c-058f-43ba-991d-48381cde2690"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""id"": ""2b0ae775-d690-4de3-ae0d-a2bc9f1caef0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse;Touch"",
+                    ""action"": ""LeftButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ede4a277-b168-45c9-bb1b-2a458d649bc7"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse;Touch"",

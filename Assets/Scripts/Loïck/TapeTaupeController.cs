@@ -11,10 +11,11 @@ public class TapeTaupeController : MinigameController<TapeTaupeData>
 
     protected override void StartMiniGame()
     {
-        
+        StartCoroutine(Chrono());
+        StartCoroutine(MiniGameCoroutine());
     }
 
-    public IEnumerator TaupeLoop()
+    public IEnumerator MiniGameCoroutine()
     {
 
         while (_timerinProgress)
@@ -45,7 +46,7 @@ public class TapeTaupeController : MinigameController<TapeTaupeData>
                     }
                     break;
             }
-            yield return new WaitForSeconds(CurrentData.TaupeDelay);
+            yield return new WaitForSeconds(_currentData.TaupeDelay);
             foreach (var Taupe in currentTaupe)
             {
                 Taupe.Type = TaupeType.None;

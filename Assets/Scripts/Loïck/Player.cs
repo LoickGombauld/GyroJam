@@ -11,7 +11,7 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private MinigameBaseData _minigameBaseData;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Vector2 _dir; 
     private CircleCollider2D _collider;
@@ -20,10 +20,10 @@ public class Player : MonoBehaviour
     private Vector2 _vel;
 
     private bool _canMove = true;
-
+    public void SetMiniGameData(MinigameBaseData data) => _minigameBaseData = data;
     public void MovePlayer()
     {
-        _vel += new Vector2(_dir.x, _dir.y) * _speed;
+        _vel += new Vector2(_dir.x, _dir.y) * _minigameBaseData.PlayerSpeed;
         _rb.MovePosition(_vel * Time.fixedDeltaTime);
     }
 

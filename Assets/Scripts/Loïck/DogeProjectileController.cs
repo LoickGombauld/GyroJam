@@ -26,14 +26,14 @@ public class DogeProjectileController : MinigameController<DogeProjectileData>
             _whenProjectilespawnEvent.Invoke();
             _currentScore += 20;
             Instantiate(_prefabsProjectile);
-            yield return new WaitForSeconds(CurrentData.ProjectileDelay);
+            yield return new WaitForSeconds(_currentData.ProjectileDelay);
         }
         SetIsWin(true);
     }
 
     private void Update()
     {
-        if (CurrentData)
+        if (_currentData)
         {
             
         }

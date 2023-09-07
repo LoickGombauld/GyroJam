@@ -17,10 +17,14 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]private List<MinigameBaseData> _minigames;
 
+    private static  GameManager _instance;
+
+    public static GameManager Instance => _instance;
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        _instance = this;
+        DontDestroyOnLoad(_instance);
     }
 
     public void WinMiniGame(int score)
@@ -51,11 +55,5 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-}
-
-
-public enum Difficulty
-{
-    Easy = 0, Normal = 1, Hard = 2
 }
 

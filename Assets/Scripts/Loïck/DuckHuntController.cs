@@ -23,16 +23,16 @@ public class DuckHuntController : MinigameController<DuckHuntData>
 
     IEnumerator MiniGameCoroutine()
     {
-        while (_timerinProgress || CurrentData.NumDucktoKill > 0)
+        while (_timerinProgress || _currentData.NumDucktoKill > 0)
         {
             _ducks.Add(Instantiate(_duckPrefab));
 
-            yield return new WaitForSeconds(CurrentData.DuckDelay);
+            yield return new WaitForSeconds(_currentData.DuckDelay);
         }
 
-        if (CurrentData.NumDucktoKill <= 0)
+        if (_currentData.NumDucktoKill <= 0)
         {
-            for (int i = 0; i < CurrentData.TimeDuration; i++)
+            for (int i = 0; i < _currentData.TimeDuration; i++)
             {
                 _currentScore += 20;
             }
@@ -48,7 +48,7 @@ public class DuckHuntController : MinigameController<DuckHuntData>
     {
         _ducks.Remove(duck);
         Destroy(duck);
-        CurrentData.NumDucktoKill--;
+        _currentData.NumDucktoKill--;
     }
 
     public void Update()

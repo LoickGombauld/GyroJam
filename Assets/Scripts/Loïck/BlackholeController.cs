@@ -18,9 +18,9 @@ public class BlackholeController : MinigameController<BlackholeData>
 
     IEnumerator MiniGameCoroutine()
     {
-        for (int i = 0; i < CurrentData.NumEnemytoKill  ; i++)
+        for (int i = 0; i < _currentData.NumEnemytoKill  ; i++)
         {
-            Vector3 randomposition = Random.insideUnitCircle * CurrentData.SpawnRange;
+            Vector3 randomposition = Random.insideUnitCircle * _currentData.SpawnRange;
             GameObject guy = Instantiate(_guyPrefab);
             guy.transform.position = randomposition;
             _blackHoleEnemies.Add(guy);
@@ -29,7 +29,7 @@ public class BlackholeController : MinigameController<BlackholeData>
         yield return new WaitUntil(() => _timerinProgress);
         
 
-        if (CurrentData.NumEnemytoKill == 0)
+        if (_currentData.NumEnemytoKill == 0)
         {
             SetIsWin(true);
         }
@@ -43,7 +43,7 @@ public class BlackholeController : MinigameController<BlackholeData>
     {
         _blackHoleEnemies.Remove(guy);
         Destroy(guy);
-        CurrentData.NumEnemytoKill--;
+        _currentData.NumEnemytoKill--;
     }
 
     public void Update()

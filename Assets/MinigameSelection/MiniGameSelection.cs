@@ -12,7 +12,7 @@ using UnityEditor.Rendering.LookDev;
 [Serializable]
 public struct MINIGAME
 {
-    public MinigameBaseData _minigameBaseData;
+    public GameObject _minigameBaseData;
     public Sprite _sprite;
     public string _name;
 }
@@ -21,6 +21,7 @@ public class MiniGameSelection : MonoBehaviour
     [Header("Global data")]
     public float countdownTime = 5.0f;
     public bool selectionDone = true;
+    public GameManager gameManager;
 
     [Header("UI")]
     public Image _spriteLeft;
@@ -147,7 +148,9 @@ public class MiniGameSelection : MonoBehaviour
         selectionDone = true;
         selectedSprite.GetComponent<Transform>().DOKill();
         selectedSprite.GetComponent<Transform>().DOScale(new Vector3(2f, 2f, 2f), 0.5f);
+        GameObject miniGame = Instantiate(minigameCurrent._minigameBaseData);
         Debug.Log("start " + minigameCurrent._name);
+
     }
 
     IEnumerator SelectionCountdown(float seconds)
